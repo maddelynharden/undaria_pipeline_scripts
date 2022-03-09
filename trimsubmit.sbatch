@@ -5,7 +5,9 @@
 #SBATCH --cpus-per-task=12
 #SBATCH --mail-type=FAIL
 
-source activate trim
+source /spack/apps/linux-centos7-x86_64/gcc-8.3.0/anaconda3-2019.10-bpb6unkhyvkirwkg44uqchcy5jyhzhvt/etc/profile.d/conda.sh
+
+conda activate trim
 
 trimmomatic PE -threads 12 -phred33 \
 wgs/${1}_1.fastq.gz wgs/${1}_2.fastq.gz \
