@@ -15,6 +15,7 @@ conda activate gatk4
 #set variables
 list_id=$(ls interval_list_33 |sed -n ${SLURM_ARRAY_TASK_ID}p)
 
+
 # Start GATK
 gatk GenotypeGVCFs -R Kr2015_Undaria.pinnatifida_superscaffolds.fasta --sequence-dictionary Kr2015_Undaria.pinnatifida_superscaffolds.dict -V gendb://${list_id}_data -O ${list_id}.vcf.gz
 

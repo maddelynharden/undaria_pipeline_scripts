@@ -13,7 +13,7 @@ conda activate gatk4
 #set variables
 sample_id=$(cat wgs/samples_file.txt | sed -n ${SLURM_ARRAY_TASK_ID}p)
 sample_fastq=${sample_id}_1_P.fastq.gz
-rg_options=$(python /scratch/mharden/undaria_variation/undaria_pipeline_scripts/parse_RG.py $sample_fastq) 
+rg_options=$(python /scratch1/mharden/undaria_variation/undaria_pipeline_scripts/parse_RG.py $sample_fastq) 
 
 # Start GATK
 
