@@ -1,6 +1,6 @@
 #!/bin/bash
 #BATCH --job-name=gatk_MergeVcfs
-#SBATCH --time=48:00:00
+#SBATCH --time=4-0
 #SBATCH --mem=0
 #SBATCH --partition=largemem
 #SBATCH -o %x.out
@@ -11,6 +11,9 @@ source /spack/apps/linux-centos7-x86_64/gcc-8.3.0/anaconda3-2019.10-bpb6unkhyvki
 conda activate gatk4
 
 #set variables
+if [ -f list_vcfs_to_merge.txt ]; then
+  rm list_vcfs_to_merge.txt
+fi
 for interval in $(ls interval_list_33)
 do 
   echo "${interval}.sorted.vcf.gz" >> list_vcfs_to_merge.txt
