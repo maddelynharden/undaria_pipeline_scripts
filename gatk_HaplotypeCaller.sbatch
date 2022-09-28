@@ -15,4 +15,4 @@ conda activate gatk4
 sample_id=$(cat wgs/samples_file.txt | sed -n ${SLURM_ARRAY_TASK_ID}p)
 
 # Start GATK
-gatk HaplotypeCaller -R Kr2015_Undaria.pinnatifida_superscaffolds.fasta -I ${sample_id}.mark_dupes.bam -O ${sample_id}.g.vcf.gz -ERC GVCF
+gatk HaplotypeCaller -R Kr2015_Undaria.pinnatifida_superscaffolds.fasta -ploidy 1 -I ${sample_id}.mark_dupes.bam -O ${sample_id}.g.vcf.gz -ERC GVCF
