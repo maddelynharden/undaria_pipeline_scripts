@@ -3,7 +3,7 @@
 #SBATCH --time=16:00:00
 #SBATCH --ntasks-per-node=12
 #SBATCH --mem=0
-#SBATCH --partition=epyc-64
+#SBATCH --partition=largemem
 #SBATCH -o %x_%a.out
 #SBATCH --array=1-33
 #SBATCH --account=noujdine_61
