@@ -1,9 +1,9 @@
 #!/bin/bash
-#BATCH --job-name=gatk_GenomicsDBImport
-#SBATCH --time=16:00:00
+#BATCH --job-name=gatk_GenotypeGVCFs
+#SBATCH --time=18:00:00
 #SBATCH --ntasks-per-node=12
 #SBATCH --mem=0
-#SBATCH --partition=largemem
+#SBATCH --partition=oneweek
 #SBATCH -o %x_%a.out
 #SBATCH --array=1-33
 #SBATCH --account=noujdine_61
