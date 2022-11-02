@@ -7,8 +7,10 @@
 #SBATCH -o %x.out
 
 # Load the GATK module:
-source ~/bin/anaconda3/etc/profile.d/conda.sh
-conda activate gatk
+cond=~/.conda_for_sbatch.sh
+[[ -a "$cond" ]] && source "$cond" || { echo "Error on source of $cond"; exit 1; }
+
+conda activate gatk4
 
 gatk VariantsToTable -V Undaria_Variants.vcf \
 -O Undaria_Variants.tab \

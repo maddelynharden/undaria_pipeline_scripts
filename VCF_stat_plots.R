@@ -6,28 +6,14 @@ library(ggplot2)
 library(gridExtra)
 library(RColorBrewer)
 
-#set working directory
-setwd("/scratch1/mharden/undaria_variation")
-
 # DATA
 # Load in data
-data_file <- "Undaria_Variants.vcf"
-data_prefix <- gsub("\\..*", "", data_file)
-data_rds <- paste(data_prefix, ".RDS", sep = "")
-if (file.exists(data_rds)) {
-  # Read in RDS of data if it exists
-  print("Using data RDS.")
-  dat <- readRDS(file = "Undaria_Variants.RDS")
+data_file <- "Undaria_Variants.tab"
+if (file.exists(data_file)) {
+  print("Using original data file.")
+  dat <- read.table(file = data_file, header = TRUE)
 } else {
-  # If no RDS, read table and create RDS
-  if (file.exists(data_file)) {
-    print("Using original data file.")
-   dat <- read.table(file = "Undaria_Variants.vcf", header = TRUE)
-    # Save as RDS binary for faster table use in future
-    saveRDS(dat, file = "Undaria_Variants.RDS")
-  } else {
-    print("Error: no data files found.")
-  }
+  print("Error: no data files found.")
 }
 
 # PLOTS
