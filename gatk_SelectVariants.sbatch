@@ -7,7 +7,9 @@
 #SBATCH -o %x.out
 
 # Load the GATK module:
-source /spack/apps/linux-centos7-x86_64/gcc-8.3.0/anaconda3-2019.10-bpb6unkhyvkirwkg44uqchcy5jyhzhvt/etc/profile.d/conda.sh
+cond=~/.conda_for_sbatch.sh
+[[ -a "$cond" ]] && source "$cond" || { echo "Error on source of $cond"; exit 1; }
+
 conda activate gatk4
 
 gatk SelectVariants -R Kr2015_Undaria.pinnatifida_superscaffolds.fasta -V Filtered_UnVariants.vcf.gz -O Selected_Undaria_Variants.vcf.gz --exclude-filtered
